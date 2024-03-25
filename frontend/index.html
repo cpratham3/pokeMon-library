@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Review App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="registerSection">
+        <h2>Register</h2>
+        Username: <input type="text" id="registerUsername"><br>
+        Password: <input type="password" id="registerPassword"><br>
+        <button id="registerButton">Register</button>
+    </div>
+    <div id="authSection">
+        <h2>Login</h2>
+        Username: <input type="text" id="loginUsername"><br>
+        Password: <input type="password" id="loginPassword"><br>
+        <button id="loginButton">Login</button>
+    </div>
+    <button id="logoutButton" style="display:none;">Logout</button>
+    <div id="pokemonSection" style="display:none;">
+        <h2>Pokémon List</h2>
+        <button id="loadPokemonButton">Load Pokémon</button>
+        <ul id="pokemonList"></ul>
+    </div>
+    <div id="pokemonDetailSection" style="display:none;">
+        <h2>Pokémon Detail</h2>
+        ID: <input type="number" id="detailPokemonId"><br>
+        <button id="viewPokemonButton">View Pokémon</button>
+        <div id="pokemonDetail"></div>
+    </div>
+    <div id="reviewSection" style="display:none;">
+        <h2>Add Review</h2>
+        Pokémon ID: <input type="number" id="reviewPokemonId"><br>
+        Review: <input type="text" id="reviewText"><br>
+        <button id="submitReviewButton">Submit Review</button>
+    </div>
+    <div id="reviewsListSection" style="display:none;">
+        <h2>Pokémon Reviews</h2>
+        Pokémon ID: <input type="number" id="reviewsForPokemonId"><br>
+        <button id="loadReviewsButton">Load Reviews</button>
+        <ul id="reviewsList"></ul>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

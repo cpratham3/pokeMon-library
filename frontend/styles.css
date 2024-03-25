@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+input[type=text], input[type=password], input[type=number] {
+    margin: 5px 0;
+    padding: 8px;
+}
+
+button {
+    margin: 10px 0;
+    padding: 8px;
+    cursor: pointer;
+}
+
+#pokemonList, #reviewsList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#pokemonList li, #reviewsList li {
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+}
