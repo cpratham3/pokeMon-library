@@ -20,9 +20,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+//@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = "*", methods = {GET, POST, PUT, DELETE}, allowedHeaders = "*")
 public class AuthController {
 
     private AuthenticationManager authenticationManager;
