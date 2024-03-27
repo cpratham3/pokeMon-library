@@ -63,6 +63,7 @@
           </div>
           <div id="reviewSection" class="mt-4" style="display: none">
             <!-- Inside the reviewSection -->
+            <h3>Add Review</h3>
             Pokémon ID:
             <input type="number" id="reviewPokemonId" class="form-control" />
             Title:
@@ -81,16 +82,17 @@
               Submit Review
             </button>
 
-            <!-- <h3>Add Review</h3>
-            Pokémon ID:
-            <input type="number" id="reviewPokemonId" class="form-control" />
-            Review:
-            <input type="text" id="reviewText" class="form-control mt-2" />
-            <button id="submitReviewButton" class="btn btn-success mt-2">
-              Submit Review
-            </button> -->
+            <h3>View Reviews</h3>
+            Pokémon ID for Reviews:
+            <input type="number" id="reviewsPokemonId" class="form-control" />
+            <button id="loadReviewsButton" class="btn btn-info mt-2">
+              Load Reviews
+            </button>
+            <ul id="reviewsList" class="list-group mt-2"></ul>
           </div>
-        </div>
+            
+          
+    </div>
       </div>
     </div>
     <script src="app.js"></script>

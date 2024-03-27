@@ -77,6 +77,40 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error submitting review:", error));
   }
 
+  function loadReviews(pokemonId) {
+    const credentials = localStorage.getItem("credentials");
+    fetch(`${BASE_URL}/pokemon/${pokemonId}/reviews`, {
+      method: "GET",
+      headers: {
+        Authorization: `Basic ${credentials}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(
+            "Failed to load reviews, server responded with " + response.status
+          );
+        return response.json();
+      })
+      .then((reviews) => {
+        const reviewsList = document.getElementById("reviewsList");
+        if (reviews.length > 0) {
+          reviewsList.innerHTML = reviews
+            .map(
+              (review) => `<li class="list-group-item">
+                <strong>Title:</strong> ${review.title} <br>
+                <strong>Content:</strong> ${review.content} <br>
+                <strong>Stars:</strong> ${review.stars}
+            </li>`
+            )
+            .join("");
+        } else {
+          reviewsList.innerHTML = `<li class="list-group-item">No reviews found for this Pokémon.</li>`;
+        }
+      })
+      .catch((error) => console.error("Error loading reviews:", error));
+  }
+
   function toggleUI(loggedIn) {
     document.getElementById("authSection").style.display = loggedIn
       ? "none"
@@ -115,6 +149,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const reviewText = document.getElementById("reviewText").value;
       const reviewStars = document.getElementById("reviewStars").value;
       submitReview(reviewpokemonId, reviewTitle, reviewText, reviewStars);
+    });
+
+  document
+    .getElementById("loadReviewsButton")
+    .addEventListener("click", function () {
+      const pokemonId = document.getElementById("reviewsPokemonId").value;
+      loadReviews(pokemonId);
     });
 });
 
