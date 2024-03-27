@@ -17,41 +17,41 @@
             <div class="card-body">
               <h2 class="card-title text-center">Welcome to Pokémon App</h2>
               <div id="authSection">
-              <form id="authForm">
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <input
-                    type="text"
-                    id="username"
-                    class="form-control"
-                    placeholder="Enter username"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    class="form-control"
-                    placeholder="Password"
-                  />
-                </div>
-                <button
-                  type="button"
-                  id="loginButton"
-                  class="btn btn-primary btn-block"
-                >
-                  Login
-                </button>
-                <button
-                  type="button"
-                  id="registerButton"
-                  class="btn btn-secondary btn-block"
-                >
-                  Register
-                </button>
-              </form>
-            </div>
+                <form id="authForm">
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input
+                      type="text"
+                      id="username"
+                      class="form-control"
+                      placeholder="Enter username"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                      type="password"
+                      id="password"
+                      class="form-control"
+                      placeholder="Password"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    id="loginButton"
+                    class="btn btn-primary btn-block"
+                  >
+                    Login
+                  </button>
+                  <button
+                    type="button"
+                    id="registerButton"
+                    class="btn btn-secondary btn-block"
+                  >
+                    Register
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
           <div id="pokemonSection" class="mt-4" style="display: none">
@@ -62,14 +62,33 @@
             <ul id="pokemonList" class="list-group mt-2"></ul>
           </div>
           <div id="reviewSection" class="mt-4" style="display: none">
-            <h3>Add Review</h3>
+            <!-- Inside the reviewSection -->
+            Pokémon ID:
+            <input type="number" id="reviewPokemonId" class="form-control" />
+            Title:
+            <input type="text" id="reviewTitle" class="form-control" /> Review
+            Content:
+            <input type="text" id="reviewText" class="form-control mt-2" />
+            Stars:
+            <input
+              type="number"
+              id="reviewStars"
+              class="form-control mt-2"
+              min="1"
+              max="5"
+            />
+            <button id="submitReviewButton" class="btn btn-success mt-2">
+              Submit Review
+            </button>
+
+            <!-- <h3>Add Review</h3>
             Pokémon ID:
             <input type="number" id="reviewPokemonId" class="form-control" />
             Review:
             <input type="text" id="reviewText" class="form-control mt-2" />
             <button id="submitReviewButton" class="btn btn-success mt-2">
               Submit Review
-            </button>
+            </button> -->
           </div>
         </div>
       </div>

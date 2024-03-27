@@ -40,28 +40,41 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         const pokemonList = document.getElementById("pokemonList");
         pokemonList.innerHTML = data.content
-          .map((pokemon) => `<li class="list-group-item">${pokemon.id}: ${pokemon.name}</li>`)
+          .map(
+            (pokemon) =>
+              `<li class="list-group-item">${pokemon.id}: ${pokemon.name}</li>`
+          )
           .join("");
       })
       .catch(handleError);
   }
 
-  function submitReview(pokemonId, review) {
+  function submitReview(reviewpokemonId, reviewTitle, reviewText, reviewStars) {
     const credentials = localStorage.getItem("credentials");
-    fetch(`${BASE_URL}/pokemon/${pokemonId}/reviews`, {
+    fetch(`${BASE_URL}/pokemon/${reviewpokemonId}/reviews`, {
       method: "POST",
       headers: {
         Authorization: `Basic ${credentials}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ review }),
+      body: JSON.stringify({
+        title: reviewTitle,
+        content: reviewText,
+        stars: reviewStars,
+      }),
     })
-      .then(handleResponse)
-      .then(() => {
-        alert("Review submitted successfully.");
-        // Optionally, refresh reviews or clear the form
+      .then((response) => {
+        if (response.status === 201) {
+          alert("Review submitted successfully.");
+          // Optionally, clear the form fields or refresh the page to show the new review
+          document.getElementById("reviewTitle").value = "";
+          document.getElementById("reviewText").value = "";
+          document.getElementById("reviewStars").value = 1; // Reset to a default value
+        } else {
+          alert("Failed to submit review. Status code: " + response.status);
+        }
       })
-      .catch(handleError);
+      .catch((error) => console.error("Error submitting review:", error));
   }
 
   function toggleUI(loggedIn) {
@@ -97,9 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("submitReviewButton")
     .addEventListener("click", function () {
-      const pokemonId = document.getElementById("reviewPokemonId").value;
+      const reviewpokemonId = document.getElementById("reviewPokemonId").value;
+      const reviewTitle = document.getElementById("reviewTitle").value;
       const reviewText = document.getElementById("reviewText").value;
-      submitReview(pokemonId, reviewText);
+      const reviewStars = document.getElementById("reviewStars").value;
+      submitReview(reviewpokemonId, reviewTitle, reviewText, reviewStars);
     });
 });
 
